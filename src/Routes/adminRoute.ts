@@ -8,9 +8,9 @@ import { adminLogin } from "../Controllers/authController";
 
 const router = express.Router();
 
-// router.post("/login", adminLogin);
-router.get("/users", getUsers);
-router.delete("/users/:id", deleteUser);
-router.put("/users/:id", updateUserProfile);
+ router.post("/login", adminLogin);
+ router.get("/users", getUsers);
+ router.delete("/users/:id", deleteUser);
+router.patch("/users/:id", updateUserProfile);
 
 export default router;

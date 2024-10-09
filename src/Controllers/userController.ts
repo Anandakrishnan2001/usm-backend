@@ -30,11 +30,18 @@ export const registerUser = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-
+ 
 export const getUsers = async (req: any, res: any) => {
   try {
     const users = await User.find({ role: "user" });
-    res.json(users);
+    console.log(users,'usersfrom backend ')
+    const userDetails = users.map(user => ({
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      profilePhotoUrl: user.imageURL,
+    }));
+    res.json(userDetails);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }

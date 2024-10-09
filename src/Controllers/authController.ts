@@ -7,6 +7,7 @@ import { generateAccessToken, generateRefreshToken } from "../Utils/jwt";
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
+    console.log(req.body ,'this form the user-login')
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -92,6 +93,7 @@ export const refreshToken = async (req: Request, res: Response) => {
 export const adminLogin = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
+    console.log(req.body,'is the admin is comming or not adminlogin ')
     const admin = await User.findOne({ email, role: "admin" });
 
     if (!admin) {
@@ -116,6 +118,7 @@ export const adminLogin = async (req: Request, res: Response) => {
         id: admin._id,
         name: admin.name,
         email: admin.email,
+        role:admin.role
       },
     });
     return;
